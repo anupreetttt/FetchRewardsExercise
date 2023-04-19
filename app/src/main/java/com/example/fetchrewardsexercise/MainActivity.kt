@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(
                 call: Call<List<MyDataItem>?>, response: Response<List<MyDataItem>?>) {
                 val responseBody = response.body()!!
-                val uniqueIds = responseBody.map { it.listId }.toSet().toList().sorted()
+                val uniqueIds = responseBody.map{ it.listId }.toSet().toList().sorted()
+                val name = responseBody.map { it.name }.toList().toString().toSortedSet()
                 val items = responseBody.filter { uniqueIds.contains(it.listId) }
 
                 myAdapter = MyAdapter(baseContext, uniqueIds, items)
