@@ -15,11 +15,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
-     val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/"
+    val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/"
     lateinit var myAdapter: MyAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -39,16 +40,21 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val  retrofitData = retrofitBuilder.getdata()
+        val retrofitData = retrofitBuilder.getdata()
 
         retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
             override fun onResponse(
-                call: Call<List<MyDataItem>?>, response: Response<List<MyDataItem>?>) {
+                call: Call<List<MyDataItem>?>,
+                response: Response<List<MyDataItem>?>
+            ) {
                 val responseBody = response.body()!!
-                val uniqueIds = responseBody.map{ it.listId }.toSet().toList().sorted()
-                val items = responseBody.filter { uniqueIds.contains(it.listId) }
+                val items = responseBody
+                    .filter { !it.name.isNullOrEmpty() }
+                    .sortedWith(compareBy({ it.listId }, { it.name }))
+                    .groupBy { it.listId }
+                    .toList()
 
-                myAdapter = MyAdapter(baseContext, uniqueIds, items)
+                myAdapter = MyAdapter(baseContext, items)
                 binding.recyclerView.adapter = myAdapter
             }
 

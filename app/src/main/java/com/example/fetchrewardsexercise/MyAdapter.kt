@@ -10,11 +10,12 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
 
-class MyAdapter(val context: Context, val uniqueIds: List<Int>, val dataItems: List<MyDataItem>) :
+class MyAdapter(val context: Context, val dataItems: List<Pair<Int, List<MyDataItem>>>) :
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
+
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val listId: TextView = itemView.findViewById(R.id.list_id)
-        val name: TextView = itemView.findViewById(R.id.textView1)
+        val names: TextView = itemView.findViewById(R.id.textView1)
         val constraintLayout: ConstraintLayout = itemView.findViewById(R.id.expandedLayout)
     }
 
@@ -24,20 +25,18 @@ class MyAdapter(val context: Context, val uniqueIds: List<Int>, val dataItems: L
     }
 
     override fun onBindViewHolder(holder: MyAdapter.ViewHolder, position: Int) {
-        val currentItem = dataItems[position]
+        val currentItem = dataItems[position].second[0]
 
-        val uniqueId = uniqueIds[position]
-        val item = dataItems.find { it.listId == uniqueId }
-        holder.listId.text = "List " + item?.listId.toString()
-        holder.name.text = currentItem.name
+        holder.listId.text = "List " + currentItem.listId.toString()
+
+        val names = dataItems[position].second.joinToString(", ") { it.name!! }
+        holder.names.text = names
 
         val isVisible : Boolean = currentItem.visibility
         holder.constraintLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
 
         holder.itemView.setOnClickListener {
-            if (item != null) {
-                Toast.makeText(context, "Clicked item: ${item.listId}", Toast.LENGTH_SHORT).show()
-            }
+            Toast.makeText(context, "Clicked item: ${currentItem.listId}", Toast.LENGTH_SHORT).show()
 
             currentItem.visibility = !currentItem.visibility
             notifyItemChanged(position)
@@ -45,8 +44,6 @@ class MyAdapter(val context: Context, val uniqueIds: List<Int>, val dataItems: L
     }
 
     override fun getItemCount(): Int {
-        return uniqueIds.size
+        return dataItems.size
     }
 }
-
-
