@@ -1,14 +1,12 @@
-package com.example.fetchrewardsexercise
+package com.anupreetttt.fetchrewardsexercise
 
 import androidx.lifecycle.LiveData
-import androidx.recyclerview.widget.RecyclerView
-import com.example.fetchrewardsexercise.viewModel.MyRepository
-import com.example.fetchrewardsexercise.viewModel.MyViewModel
+import com.anupreetttt.fetchrewardsexercise.viewModel.MyRepository
+import com.anupreetttt.fetchrewardsexercise.viewModel.MyViewModel
 import junit.framework.TestCase.*
 import org.junit.Test
-import org.robolectric.Robolectric
 
-class MyAdapterTest {
+class MyTestCases {
 
     // Test the LiveData object returned by the view model:
     @Test
@@ -17,7 +15,7 @@ class MyAdapterTest {
         assertTrue(viewModel.getMyData() is LiveData)
     }
 
-
+// This test case is getting the data from a repository, sorting each list of MyDataItems by listId
     @Test
     fun testSorting() {
         val repository = MyRepository()

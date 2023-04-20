@@ -1,10 +1,10 @@
-package com.example.fetchrewardsexercise.viewModel
+package com.anupreetttt.fetchrewardsexercise.viewModel
 
 import android.util.Log.d
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.fetchrewardsexercise.DataModel.MyDataItem
-import com.example.fetchrewardsexercise.InterfaceApi.ApiInterface
+import com.anupreetttt.fetchrewardsexercise.DataModel.MyDataItem
+import com.anupreetttt.fetchrewardsexercise.InterfaceApi.ApiInterface
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

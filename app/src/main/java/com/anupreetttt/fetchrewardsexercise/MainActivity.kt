@@ -1,12 +1,12 @@
-package com.example.fetchrewardsexercise
+package com.anupreetttt.fetchrewardsexercise
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.fetchrewardsexercise.Adapter.MyAdapter
+import com.anupreetttt.fetchrewardsexercise.Adapter.MyAdapter
 import com.example.fetchrewardsexercise.databinding.ActivityMainBinding
-import com.example.fetchrewardsexercise.viewModel.MyViewModel
+import com.anupreetttt.fetchrewardsexercise.viewModel.MyViewModel
 
 
 // This is the main activity of the app.

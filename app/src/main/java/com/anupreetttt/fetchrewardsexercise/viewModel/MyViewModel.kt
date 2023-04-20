@@ -1,8 +1,8 @@
-package com.example.fetchrewardsexercise.viewModel
+package com.anupreetttt.fetchrewardsexercise.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.example.fetchrewardsexercise.DataModel.MyDataItem
+import com.anupreetttt.fetchrewardsexercise.DataModel.MyDataItem
 
 class MyViewModel : ViewModel() {
 

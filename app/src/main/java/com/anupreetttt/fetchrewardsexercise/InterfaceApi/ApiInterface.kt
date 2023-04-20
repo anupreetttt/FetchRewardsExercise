@@ -1,6 +1,6 @@
-package com.example.fetchrewardsexercise.InterfaceApi
+package com.anupreetttt.fetchrewardsexercise.InterfaceApi
 
-import com.example.fetchrewardsexercise.DataModel.MyDataItem
+import com.anupreetttt.fetchrewardsexercise.DataModel.MyDataItem
 import retrofit2.Call
 import retrofit2.http.GET
 

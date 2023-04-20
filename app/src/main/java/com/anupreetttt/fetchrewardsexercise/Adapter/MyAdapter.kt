@@ -1,4 +1,4 @@
-package com.example.fetchrewardsexercise.Adapter
+package com.anupreetttt.fetchrewardsexercise.Adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,7 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.fetchrewardsexercise.DataModel.MyDataItem
+import com.anupreetttt.fetchrewardsexercise.DataModel.MyDataItem
 import com.example.fetchrewardsexercise.R
 
 

@@ -1,4 +1,4 @@
-package com.example.fetchrewardsexercise.DataModel
+package com.anupreetttt.fetchrewardsexercise.DataModel
 
 data class MyDataItem(
     val id: Int,

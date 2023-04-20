@@ -1,4 +1,4 @@
-package com.example.fetchrewardsexercise
+package com.anupreetttt.fetchrewardsexercise
 
 import org.junit.Test
 

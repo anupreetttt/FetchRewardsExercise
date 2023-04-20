@@ -13,11 +13,13 @@ The final result should be displayed to the user in an easy-to-read list.
 
 Please make the project buildable on the latest (non-pre release) tools and supporting the current release mobile OS.
 
-## Minimum requirements
+## Requirements
 
 1. Android Studio installed to latest version
 2. AVD emulator
 3. Android SDK API version 33
+4. Min SDK 26
+5. Targeted SDK 33
 
 ## Installation
 

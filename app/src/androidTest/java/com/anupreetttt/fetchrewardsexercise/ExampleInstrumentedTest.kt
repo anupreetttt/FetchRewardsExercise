@@ -1,4 +1,4 @@
-package com.example.fetchrewardsexercise
+package com.anupreetttt.fetchrewardsexercise
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
