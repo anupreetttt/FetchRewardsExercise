@@ -18,6 +18,8 @@ Please make the project buildable on the latest (non-pre release) tools and supp
 1. Android Studio installed to latest version
 2. AVD emulator
 3. Android SDK API version 33
+4. Minimum SDK 26
+5. Targeted SDK 33
 
 ## Installation
 
