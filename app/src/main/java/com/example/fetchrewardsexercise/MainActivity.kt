@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                 val responseBody = response.body()!!
                 val items = responseBody
                     .filter { !it.name.isNullOrEmpty() }
-                    .sortedWith(compareBy({ it.listId }, { it.name }))
+                    .sortedWith(compareBy({ it.listId }, { it.name } , {it.id}))
                     .groupBy { it.listId }
                     .toList()
 
