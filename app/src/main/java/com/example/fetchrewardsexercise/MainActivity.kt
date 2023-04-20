@@ -2,65 +2,42 @@ package com.example.fetchrewardsexercise
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log.d
-
+import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.fetchrewardsexercise.Adapter.MyAdapter
 import com.example.fetchrewardsexercise.databinding.ActivityMainBinding
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import com.example.fetchrewardsexercise.viewModel.MyViewModel
 
 
+// This is the main activity of the app.
 class MainActivity : AppCompatActivity() {
 
+    // Declare variables for the activity's layout binding, adapter, and view model.
     private lateinit var binding: ActivityMainBinding
-
-    val BASE_URL = "https://fetch-hiring.s3.amazonaws.com/"
-    lateinit var myAdapter: MyAdapter
-    lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var myAdapter: MyAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private val viewModel: MyViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Inflate the activity's layout using the binding.
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // Set the RecyclerView to have a fixed size.
         binding.recyclerView.setHasFixedSize(true)
 
+        // Create a new LinearLayoutManager and set it as the RecyclerView's layout manager.
         linearLayoutManager = LinearLayoutManager(this)
         binding.recyclerView.layoutManager = linearLayoutManager
-        getMyData();
-    }
 
-    private fun getMyData() {
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL)
-            .build()
-            .create(ApiInterface::class.java)
-
-        val retrofitData = retrofitBuilder.getdata()
-
-        retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
-            override fun onResponse(
-                call: Call<List<MyDataItem>?>,
-                response: Response<List<MyDataItem>?>
-            ) {
-                val responseBody = response.body()!!
-                val items = responseBody
-                    .filter { !it.name.isNullOrEmpty() }
-                    .sortedWith(compareBy({ it.listId }, { it.name!!.split(" ")[1].toInt() }))
-                    .groupBy { it.listId }
-                    .toList()
-
-                myAdapter = MyAdapter(baseContext, items)
-                binding.recyclerView.adapter = myAdapter
-            }
-
-            override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
-                d("ERROR", "onFailure")
-            }
-        })
+        // Observe the LiveData object returned by the view model's getMyData() method.
+        // When the data is updated, create a new adapter with the updated data and set it on the RecyclerView.
+        viewModel.getMyData().observe(this) { items ->
+            myAdapter = MyAdapter(baseContext, items)
+            binding.recyclerView.adapter = myAdapter
+        }
     }
 }
+
+
