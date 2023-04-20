@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,8 +17,7 @@ class MyAdapter(val context: Context, val dataItems: List<Pair<Int, List<MyDataI
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val listId: TextView = itemView.findViewById(R.id.list_id)
         val names: TextView = itemView.findViewById(R.id.textView1)
-//        val id : TextView = itemView.findViewById(R.id.textView2)
-        val constraintLayout: ConstraintLayout = itemView.findViewById(R.id.expandedLayout)
+        val constraintLayout: LinearLayout = itemView.findViewById(R.id.expandedLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.ViewHolder {
@@ -29,10 +29,9 @@ class MyAdapter(val context: Context, val dataItems: List<Pair<Int, List<MyDataI
         val currentItem = dataItems[position].second[0]
 
         holder.listId.text = "List " + currentItem.listId.toString()
-//        holder.id.text = "ID: " + currentItem.id
 
-        val names = dataItems[position].second.joinToString(", ") { it.name!! }
-        holder.names.text = "Name: " + names
+        val names = dataItems[position].second.map { "Name: ${it.name!!}" }.joinToString(", ")
+        holder.names.text = names
 
         val isVisible : Boolean = currentItem.visibility
         holder.constraintLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
