@@ -24,3 +24,8 @@ Please make the project buildable on the latest (non-pre release) tools and supp
 1. Download the zip file from github or go to desired location in terminal/command prompt and do "git clone https://github.com/anupreetttt/FetchRewardsExercise.git"
 2. Open Android Studio, File -> Open and navigate to your folder location and click open
 3. Ones gradle build is finish you should be able to run the application, by clicking on run button.
+
+## Demo: 
+
+https://user-images.githubusercontent.com/55594741/233349274-9fc30370-2c56-4d40-8c8e-f6126c1d30b5.mov
+
