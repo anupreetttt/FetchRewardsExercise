@@ -17,6 +17,7 @@ class MyAdapter(val context: Context, val dataItems: List<Pair<Int, List<MyDataI
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val listId: TextView = itemView.findViewById(R.id.list_id)
         val names: TextView = itemView.findViewById(R.id.textView1)
+//        val ids: TextView = itemView.findViewById(R.id.textView2)
         val constraintLayout: LinearLayout = itemView.findViewById(R.id.expandedLayout)
     }
 
@@ -30,8 +31,13 @@ class MyAdapter(val context: Context, val dataItems: List<Pair<Int, List<MyDataI
 
         holder.listId.text = "List " + currentItem.listId.toString()
 
-        val names = dataItems[position].second.map { "Name: ${it.name!!}" }.joinToString(", ")
+//        val myId = dataItems[position].second[0]
+//
+//        holder.ids.text = myId.id.toString()
+
+        val names = dataItems[position].second.map { "Name: ${it.name!!} & ID: ${it.id!!}" }.joinToString(", ")
         holder.names.text = names
+
 
         val isVisible : Boolean = currentItem.visibility
         holder.constraintLayout.visibility = if (isVisible) View.VISIBLE else View.GONE

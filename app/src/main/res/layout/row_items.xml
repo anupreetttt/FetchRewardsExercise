@@ -31,7 +31,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ashjkgdasgd"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -64,23 +63,17 @@
 
             <TextView
                 android:id="@+id/textView1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Name: Item 234"
-                android:textSize="25sp" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Second Item"
-                android:textSize="20sp" />
-
+                android:textColor="@color/black"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:paddingRight="50dp"
+                android:paddingLeft="50dp"
+                android:layout_margin="10dp"
+                android:text="Name: Item 0            ID: 0, Name: Item 234 ID: 234, Name: Item 234 ID: 234"
+                android:textSize="24sp" />
         </LinearLayout>
+
 
         <View
             android:id="@+id/underline"
@@ -89,3 +82,4 @@
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
